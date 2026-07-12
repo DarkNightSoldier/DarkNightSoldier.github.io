@@ -1,1 +1,55 @@
-theme: jekyll-theme-cayman
+title: "darkns // Alejandro Higuera Castro"
+tagline: "Cybersecurity Portfolio"
+description: >-
+  Cybersecurity portfolio of darkns (Alejandro Higuera Castro) — pentesting
+  writeups, Cloud Security & Google SecOps, and OT/ICS defense.
+url: "https://darknightsoldier.github.io"
+baseurl: ""
+
+author:
+  name: "Alejandro Higuera Castro"
+  nickname: "darkns"
+  location: "Bogotá, Colombia"
+  github: "https://github.com/DarkNightSoldier"
+  linkedin: "https://www.linkedin.com/in/alejandro-higuera/"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  writeups:
+    output: true
+    permalink: /writeups/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "writeups"
+    values:
+      layout: "writeup"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - vendor
+  - node_modules

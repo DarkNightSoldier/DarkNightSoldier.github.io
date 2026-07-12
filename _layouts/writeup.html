@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<article>
+  <div class="writeup-header">
+    <a class="back-link" href="{{ '/writeups/' | relative_url }}">&larr; all writeups</a>
+    <h1>{{ page.title }}</h1>
+    <div class="writeup-meta">
+      {% if page.level %}<span class="badge level-{{ page.level | downcase }}">{{ page.level }}</span>{% endif %}
+      {% if page.os %}<span class="badge plain">{{ page.os }}</span>{% endif %}
+      {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+    </div>
+    <div class="writeup-infobox">
+      <dl>
+        {% if page.machine_name %}<dt>Machine</dt><dd>{{ page.machine_name }}</dd>{% endif %}
+        {% if page.platform %}<dt>Platform</dt><dd>{{ page.platform }}</dd>{% endif %}
+        {% if page.creator %}<dt>Author</dt><dd>{{ page.creator }}</dd>{% endif %}
+        {% if page.release_date %}<dt>Released</dt><dd>{{ page.release_date | date: "%B %-d, %Y" }}</dd>{% endif %}
+        {% if page.date %}<dt>Writeup published</dt><dd>{{ page.date | date: "%B %-d, %Y" }}</dd>{% endif %}
+      </dl>
+    </div>
+  </div>
+  <div class="writeup-body">
+    {{ content }}
+  </div>
+</article>

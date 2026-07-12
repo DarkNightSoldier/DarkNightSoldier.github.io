@@ -1,25 +1,54 @@
-  
-<!DOCTYPE html>
-<html>
-<head>
-<title>Alejandro Higuera-Personal Website</title>
-</head>
-<body>
-<center>
-<h1>Welcome to my personal website UNDER CONSTRUCTION :)</h1>
-<p>My name is Alejandro and I am from Colombia. :)</p>
-<img src="https://unal.edu.co/typo3conf/ext/unal_skin_default/Resources/Public/images/escudoUnal_black.png" alt="Universidad Nacional" width="234" height="123">
-<p>I study Computer Science at National University since 2020-1S</p>
-<p>I use to swim and cook, these are my hobbies :D </p>
-<p>I love Biology and I am studying Artifficial Intelligence in Platzi</p>
-</center>
-<h1>My temporal Portfolio</h1>
-<h2>ColabAudioProcessing</h2>
-<p>A module in iPython for manipulation and analysis of sound WAV files. <a href="https://alejandrohiguera.codes/AudioProcessing/acerca.html">The website of the project :D</a></p>
-<br>
-<h2>La vecindad del Chavo Website</h2>
-<p>A responsive website about la Vecindad del Chavo using only HTML and CSS <a href="https://alejandrohiguera.codes/GraficaInteractiva">The website of the project</a></p>
-<h2>Octavoa.biz</h2>
-<p>A responsive website made on Wordpress CMS with support of Blogging for colaborative sharing of homework <a href="https://web.archive.org/web/20161003171732/http://octavoa.biz/">Snapshot of the project</a>< </h2>
-</body>
-</html>
+---
+layout: default
+title: Home
+description: "Cybersecurity portfolio of darkns (Alejandro Higuera Castro) — pentesting writeups, Cloud Security & Google SecOps, and OT/ICS defense."
+---
+<section class="hero">
+  <div class="eyebrow">whoami</div>
+  <h1>Hi, I'm <span class="accent">darkns</span></h1>
+  <div class="role">Alejandro Higuera Castro — Computer Scientist · Cloud Security &amp; Google SecOps · OT/ICS</div>
+  <p class="lede">
+    Cybersecurity enthusiast based in Bogotá, Colombia, working across both sides of the fence: defending
+    industrial (OT/ICS) and cloud environments as a SecOps analyst, and breaking into machines in my own
+    time to keep an offensive mindset sharp. This site collects my pentesting writeups and professional
+    background.
+  </p>
+  <div class="cta-row">
+    <a class="btn primary" href="{{ '/writeups/' | relative_url }}">Read my writeups</a>
+    <a class="btn" href="{{ '/cv/' | relative_url }}">View CV</a>
+    <a class="btn" href="{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="tag-row">
+    <span class="tag">Google SecOps (Chronicle SIEM/SOAR)</span>
+    <span class="tag">OT/ICS · ISA/IEC 62443</span>
+    <span class="tag">Pentesting</span>
+    <span class="tag">CompTIA Security+</span>
+    <span class="tag">Google Cloud PSOE</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Latest writeups</h2>
+    <a class="view-all" href="{{ '/writeups/' | relative_url }}">view all &rarr;</a>
+  </div>
+
+  {% assign writeups = site.writeups | sort: 'date' | reverse %}
+  {% if writeups.size > 0 %}
+  <div class="card-grid">
+    {% for w in writeups limit: 3 %}
+    <a class="wcard" href="{{ w.url | relative_url }}">
+      <div class="wcard-top">
+        {% if w.level %}<span class="badge level-{{ w.level | downcase }}">{{ w.level }}</span>{% endif %}
+        {% if w.os %}<span class="badge plain">{{ w.os }}</span>{% endif %}
+      </div>
+      <h3>{{ w.title }}</h3>
+      <p>{{ w.summary }}</p>
+      <div class="meta">{{ w.platform }}{% if w.date %} · {{ w.date | date: "%B %-d, %Y" }}{% endif %}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state"># no writeups published yet — check back soon</div>
+  {% endif %}
+</section>

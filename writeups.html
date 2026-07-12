@@ -1,0 +1,36 @@
+---
+layout: default
+title: Writeups
+description: "Pentesting and CTF machine writeups by darkns."
+permalink: /writeups/
+---
+<section class="hero" style="padding-bottom: 10px;">
+  <div class="eyebrow">ls -la ./writeups</div>
+  <h1>Writeups</h1>
+  <p class="lede">
+    Walkthroughs of machines and CTF challenges I've solved, written up with the same rigor I'd use in a
+    professional engagement report: full attack chain, screenshots, and remediation notes.
+  </p>
+</section>
+
+<section class="section" style="padding-top:0;">
+  {% assign writeups = site.writeups | sort: 'date' | reverse %}
+  {% if writeups.size > 0 %}
+  <div class="card-grid">
+    {% for w in writeups %}
+    <a class="wcard" href="{{ w.url | relative_url }}">
+      <div class="wcard-top">
+        {% if w.level %}<span class="badge level-{{ w.level | downcase }}">{{ w.level }}</span>{% endif %}
+        {% if w.os %}<span class="badge plain">{{ w.os }}</span>{% endif %}
+        {% for tag in w.tags limit: 3 %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </div>
+      <h3>{{ w.title }}</h3>
+      <p>{{ w.summary }}</p>
+      <div class="meta">{{ w.platform }}{% if w.date %} · {{ w.date | date: "%B %-d, %Y" }}{% endif %}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state"># no writeups published yet — check back soon</div>
+  {% endif %}
+</section>
