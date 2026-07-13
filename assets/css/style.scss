@@ -245,10 +245,12 @@ a:hover { color: var(--accent-strong); text-decoration: underline; }
   display: block;
   margin: 14px 0 6px;
 }
-.writeup-body em {
-  display: block;
+.writeup-body em { font-style: italic; }
+/* Image captions: a paragraph consisting solely of italic text right after an image */
+.writeup-body p:has(> em:only-child) {
   color: var(--text-faint);
   font-size: 0.85rem;
+  margin-top: -6px;
   margin-bottom: 22px;
 }
 .writeup-body code {

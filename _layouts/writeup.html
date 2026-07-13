@@ -17,6 +17,9 @@ layout: default
         {% if page.creator %}<dt>Author</dt><dd>{{ page.creator }}</dd>{% endif %}
         {% if page.release_date %}<dt>Released</dt><dd>{{ page.release_date | date: "%B %-d, %Y" }}</dd>{% endif %}
         {% if page.date %}<dt>Writeup published</dt><dd>{{ page.date | date: "%B %-d, %Y" }}</dd>{% endif %}
+        {% if page.lab_url %}<dt>Lab</dt><dd><a href="{{ page.lab_url }}" target="_blank" rel="noopener">{{ page.lab_name | default: page.lab_url }}</a></dd>{% endif %}
+        {% if page.prerequisite_url %}<dt>Prerequisite</dt><dd><a href="{{ page.prerequisite_url }}">{{ page.prerequisite_title }}</a></dd>{% endif %}
+        {% if page.next_lab_url %}<dt>Next lab</dt><dd><a href="{{ page.next_lab_url | relative_url }}">{{ page.next_lab_title }}</a></dd>{% endif %}
       </dl>
     </div>
   </div>

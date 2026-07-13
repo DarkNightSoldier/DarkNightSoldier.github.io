@@ -8,6 +8,10 @@ level: Easy
 os: Linux
 release_date: 2026-07-11
 date: 2026-07-12
+lab_url: "https://spartancybersecurity.com/en/courses/professional-junior-pentesting-course"
+lab_name: "Spartan Cybersecurity — CPPJ 101"
+next_lab_url: "/writeups/angel-machine/"
+next_lab_title: "Angel (pivot from this machine into the internal network)"
 summary: >-
   Chaining anonymous FTP credential disclosure, credential reuse against WordPress,
   and an authenticated theme-editor RCE to land a foothold — then abusing a
@@ -335,3 +339,6 @@ Anonymous FTP, credential reuse, an editable theme file, a loose file permission
 `sudoers` entry — none of them exotic — were enough to go from unauthenticated network access to `root`.
 Treating enumeration as a first-class phase, and cross-referencing findings across services (FTP → WordPress
 username, in this case), is what turns a handful of low-severity issues into a full compromise path.
+
+This root shell on Editorial isn't the end of the road, either — it's the pivot point used to reach an
+internal-only host in the next writeup: **[Angel]({{ '/writeups/angel-machine/' | relative_url }})**.
